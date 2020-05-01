@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>CKEditor 4 Demo</title>
+        <script src="scripts/ckeditor/ckeditor.js"></script>
+    </head>
+    <body>
+        <div>
+            <form>
+                <textarea name="editor1" id="editor1" rows="10" cols="80">
+                    This is my textarea to be replaced with CKEditor.
+                </textarea>
+            </form>
+        </div>
+        <script type="text/javascript">
+        if (typeof CKEDITOR !== 'undefined') {
+            for (var instanceName in CKEDITOR.instances) {
+                if (typeof CKEDITOR.instances[instanceName] !== 'undefined') {
+                    debugger;
+                    CKEDITOR.instances[instanceName].destroy();
+                }
+            }
+        }
+        CKEDITOR.replace( 'editor1', {
+            extraPlugins: 'scayt',
+            contentsCss: 'styles/editor.css',
+            stylesSet: 'gov_uk',
+            toolbarGroups: [
+                { name: 'document', groups: [ 'mode', 'document', 'doctools' ] },
+                { name: 'editing', groups: [ 'find', 'selection', 'spellchecker', 'editing' ] },
+                { name: 'forms', groups: [ 'forms' ] },
+                { name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ] },
+                { name: 'paragraph', groups: [ 'list', 'indent', 'blocks', 'align', 'bidi', 'paragraph' ] },
+                { name: 'links', groups: [ 'links' ] },
+                { name: 'clipboard', groups: [ 'clipboard', 'undo' ] },
+                { name: 'insert', groups: [ 'insert' ] },
+                { name: 'styles', groups: [ 'styles' ] },
+                { name: 'colors', groups: [ 'colors' ] },
+                { name: 'tools', groups: [ 'tools' ] },
+                { name: 'others', groups: [ 'others' ] },
+                { name: 'about', groups: [ 'about' ] }
+            ],
+            removeButtons: 'Italic,Underline,Strike,Subscript,Superscript,CopyFormatting,RemoveFormat,Outdent,Indent,CreateDiv,Blockquote,JustifyLeft,JustifyCenter,JustifyRight,JustifyBlock,BidiLtr,BidiRtl,Unlink,Anchor,Language,Source,Save,NewPage,Templates,Preview,Print,Cut,Copy,Paste,PasteText,PasteFromWord,Find,Replace,SelectAll,Form,Checkbox,Radio,TextField,Textarea,Select,Button,ImageButton,HiddenField,Image,Flash,Table,HorizontalRule,Smiley,SpecialChar,PageBreak,Iframe,Styles,Format,Font,FontSize,TextColor,BGColor,ShowBlocks,Maximize,About'
+         });
+    </script>
+    </body>
+</html>
